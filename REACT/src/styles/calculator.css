@@ -1,0 +1,130 @@
+/* Lomakekortti */
+.form-card h1 {
+  text-align: center;
+  font-size: clamp(1.5rem, 1.1rem + 1.8vw, 2.25rem);
+  font-weight: 700;
+}
+
+.form-intro {
+  text-align: center;
+  font-size: 0.95rem;
+  margin: 0.5rem 0 1.5rem;
+}
+
+/* Lomakkeen ruudukko */
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem 1.5rem;
+  align-items: start;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  min-width: 0;
+}
+
+.field label,
+.field legend {
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 0;
+}
+
+/* Tekstikentät ja alasvetovalikot */
+.field input[type="text"],
+.field input[type="number"],
+.field select {
+  width: 100%;
+  font: inherit;
+  font-size: 0.95rem;
+  color: var(--text);
+  background: #fff;
+  padding: 0.5rem 0.7rem;
+  border: 1.5px solid var(--blue);
+  border-radius: 9px;
+}
+
+.field input::placeholder { color: #6b7a82; }
+
+.field select {
+  appearance: none;
+  padding-right: 2.5rem;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%231c2b33' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+}
+
+.field input:focus-visible,
+.field select:focus-visible {
+  outline: 3px solid var(--text);
+  outline-offset: 2px;
+}
+
+/* Valintaruudut ja valintanapit */
+fieldset.field {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.check-list {
+  display: grid;
+  gap: 0.35rem;
+  max-width: 14rem;
+  padding-left: 0.75rem;
+}
+
+.check {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  font-size: 0.95rem;
+  cursor: pointer;
+}
+
+.check input {
+  width: 1rem;
+  height: 1rem;
+  accent-color: var(--blue);
+  cursor: pointer;
+}
+
+/* Painike ja tulos */
+.form-actions {
+  grid-column: 1 / -1;
+  text-align: center;
+  margin-top: 0.75rem;
+}
+
+.btn-large {
+  border: 0;
+  font-family: inherit;
+  font-size: 1rem;
+  padding: 0.6rem 1.75rem;
+  border-radius: 9px;
+  cursor: pointer;
+}
+
+button.btn:focus-visible {
+  outline: 3px solid var(--text);
+  outline-offset: 3px;
+}
+
+.result {
+  margin-top: 1.5rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--blue-dark);
+}
+
+.result:empty { display: none; }
+
+/* Pieni näyttö */
+@media (max-width: 760px) {
+  .form-grid { grid-template-columns: 1fr; }
+  .btn-large { width: 100%; padding-inline: 1rem; }
+}
