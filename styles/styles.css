@@ -15,7 +15,7 @@
 *, *::before, *::after { box-sizing: border-box; }
 
 html {
-  font-size: clamp(1.0625rem, 0.95rem + 0.5vw, 1.25rem);
+  font-size: clamp(1rem, 0.9rem + 0.25vw, 1.125rem);
 }
 
 body {
@@ -74,7 +74,7 @@ a:focus-visible, .btn:focus-visible {
 /* ---------- Buttons ---------- */
 .btn {
   display: inline-block;
-  padding: 0.65rem 2.5rem;
+  padding: 0.55rem 1.75rem;
   background: var(--blue);
   color: #fff;
   font-weight: 600;
@@ -88,7 +88,7 @@ a:focus-visible, .btn:focus-visible {
 }
 
 .btn-small {
-    padding: 1.0rem 1.25rem;
+    padding: 0.65rem 1rem;
     font-size: 0.9rem;
 
 }
@@ -96,12 +96,12 @@ a:focus-visible, .btn:focus-visible {
 /* ---------- Hero ---------- */
 .hero {
   position: relative;
-  min-height: 26rem;
+  min-height: 22rem;
   border-radius: var(--radius);
   overflow: hidden;
   display: grid;
   place-items: center;
-  padding: 8rem 1rem;
+  padding: 5rem 1rem;
   background: #0d7f9c
 }
 /* Slides */
@@ -151,12 +151,15 @@ a:focus-visible, .btn:focus-visible {
 }
 .hero-dot.is-active { background: #fff; }
 
-.site-header,
 .hero,
 .card,
 .site-footer {
   width: min(100% - 2 * var(--page-gutter), var(--page-width));
   margin-inline: auto;
+}
+
+.site-header {
+  width: 100%;
 }
 
 
@@ -166,7 +169,7 @@ a:focus-visible, .btn:focus-visible {
 
 .hero-logo {
     display: flex;
-    height: 15rem;
+    height: 11rem;
     width: auto;
     /* mix-blend-mode: multiply; */
 }
@@ -178,11 +181,11 @@ a:focus-visible, .btn:focus-visible {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1.5rem;
+  gap: 1rem;
 }
 
 .hero-text {
-    padding: 2rem 1rem;
+    padding: 1rem;
     font-size: clamp(1.1rem, 1rem + 1vw, 1.5rem);
     font-weight: 500;
 }
@@ -190,23 +193,28 @@ a:focus-visible, .btn:focus-visible {
 /* ---------- Cards ---------- */
 .card {
   max-width: none;
-  margin-block: 3rem 0;
+  margin-block: 2rem 0;
   margin-inline: clamp(1rem, 5vw, 3rem);
-  padding: clamp(1.5rem, 4vw, 2.5rem);
+  padding: clamp(1.25rem, 3vw, 2rem);
   background: #fff;
   border: 1px solid var(--blue-border);
   border-radius: var(--radius);
   box-shadow: 0 6px 24px rgba(18, 164, 200, 0.15);
 }
-main > .card:last-child { margin-bottom: 3rem; }
+.home-section {
+  margin-top: 1.5rem;
+  padding: clamp(1rem, 2.5vw, 1.5rem);
+}
+main > .card:last-child { margin-bottom: 2rem; }
 
 .card h2 {
   text-align: center;
   color: var(--blue);
   font-size: clamp(1.5rem, 1.1rem + 1.8vw, 2.25rem);
   font-weight: 600;
-  margin-bottom: 2rem;
+  margin-bottom: 1.25rem;
 }
+.home-section h2 { margin-bottom: 1rem; }
 
 /* Steps */
 .steps {
@@ -214,9 +222,10 @@ main > .card:last-child { margin-bottom: 3rem; }
   padding: 0;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 2rem;
+  gap: 1.5rem;
   counter-reset: step;
 }
+.home-section .steps { gap: 1rem; }
 
 .steps li {
   text-align: center;
@@ -230,12 +239,14 @@ main > .card:last-child { margin-bottom: 3rem; }
   font-size: 2.5rem;
   font-weight: 500;
 }
+.home-section .steps li::before { font-size: 2.25rem; }
 
 .steps h3 {
     font-size: clamp(1.15rem, 1rem + 0.6vw, 1.4rem);
     font-weight: 600;
     margin-bottom: 0.5rem;
 }
+.home-section .steps h3 { margin-bottom: 0.35rem; }
 
 .steps p {
     font-size: 1rem;
@@ -246,8 +257,9 @@ main > .card:last-child { margin-bottom: 3rem; }
 .factors {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 2rem 3rem;
+  gap: 1.5rem 2rem;
 }
+.home-section .factors { gap: 1.25rem 1.5rem; }
 
 .factors h3 {
   color: var(--blue);
@@ -262,7 +274,7 @@ main > .card:last-child { margin-bottom: 3rem; }
 }
 
 .factors p + p {
-    margin-top: 0.4rem;
+    margin-top: 0.3rem;
 }
 
 .factors strong {
@@ -272,7 +284,7 @@ main > .card:last-child { margin-bottom: 3rem; }
 .factors ul {
     list-style: none;
     padding: 0;
-    margin-top: 0.4rem;
+    margin-top: 0.3rem;
 }
 
 /* ---------- Footer ---------- */
@@ -280,7 +292,7 @@ main > .card:last-child { margin-bottom: 3rem; }
   text-align: center;
   font-size: 0.85rem;
   color: var(--muted);
-  padding: 1.5rem 1rem 2rem;
+  padding: 1.25rem 1rem 1.5rem;
 }
 .logo img {
   height: 100%;
@@ -293,7 +305,7 @@ main > .card:last-child { margin-bottom: 3rem; }
   line-height: 1.2;
 }
 
-.card {
+.card:not(.form-card) {
   transition:
     transform 0.5s cubic-bezier(0.22, 1, 0.36, 1),
     box-shadow 0.5s cubic-bezier(0.22, 1, 0.36, 1);
@@ -301,7 +313,7 @@ main > .card:last-child { margin-bottom: 3rem; }
 }
 
 @media (hover: hover) {
-  .card:hover {
+  .card:not(.form-card):hover {
     transform: scale(1.02);
     box-shadow: 0 14px 36px rgba(18, 164, 200, 0.22);
   }

@@ -7,29 +7,29 @@
 
 .form-intro {
   text-align: center;
-  font-size: 1.05rem;
-  margin: 0.5rem 0 2.5rem;
+  font-size: 0.95rem;
+  margin: 0.5rem 0 1.5rem;
 }
 
 /* Lomakkeen ruudukko */
 .form-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 1.75rem 3rem;
+  gap: 1rem 1.5rem;
   align-items: start;
 }
 
 .field {
   display: flex;
   flex-direction: column;
-  gap: 0.4rem;
+  gap: 0.25rem;
   min-width: 0;
 }
 
 .field label,
 .field legend {
   font-weight: 600;
-  font-size: 1rem;
+  font-size: 0.95rem;
   padding: 0;
 }
 
@@ -39,12 +39,12 @@
 .field select {
   width: 100%;
   font: inherit;
-  font-size: 1rem;
+  font-size: 0.95rem;
   color: var(--text);
   background: #fff;
-  padding: 0.75rem 1rem;
+  padding: 0.5rem 0.7rem;
   border: 1.5px solid var(--blue);
-  border-radius: 12px;
+  border-radius: 9px;
 }
 
 .field input::placeholder { color: #6b7a82; }
@@ -72,7 +72,7 @@ fieldset.field {
 
 .check-list {
   display: grid;
-  gap: 0.6rem;
+  gap: 0.35rem;
   max-width: 14rem;
   padding-left: 0.75rem;
 }
@@ -81,14 +81,14 @@ fieldset.field {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 1rem;
-  font-size: 1rem;
+  gap: 0.75rem;
+  font-size: 0.95rem;
   cursor: pointer;
 }
 
 .check input {
-  width: 1.25rem;
-  height: 1.25rem;
+  width: 1rem;
+  height: 1rem;
   accent-color: var(--blue);
   cursor: pointer;
 }
@@ -97,15 +97,15 @@ fieldset.field {
 .form-actions {
   grid-column: 1 / -1;
   text-align: center;
-  margin-top: 1.5rem;
+  margin-top: 0.75rem;
 }
 
 .btn-large {
   border: 0;
   font-family: inherit;
-  font-size: 1.25rem;
-  padding: 0.9rem 3rem;
-  border-radius: 12px;
+  font-size: 1rem;
+  padding: 0.6rem 1.75rem;
+  border-radius: 9px;
   cursor: pointer;
 }
 
