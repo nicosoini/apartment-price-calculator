@@ -63,7 +63,7 @@ Google Gemini AI was utilized in creating the machine learning model. The AI was
 
 Basic principle of the multivariate linear regression model:
 
-![regression formula](https://github.com/nicosoini/Asuntohintalaskuri/blob/main/kuvat/ML-mallin-laskukaava.png)
+![regression formula](https://github.com/nicosoini/apartment-price-calculator/blob/main/public/kuvat/ML-mallin-laskukaava.png)
 
 - β₀ = intercept / baseline value
 - β₁ = variable coefficient (floor area)
