@@ -1,118 +1,13 @@
-<!DOCTYPE html>
-<html lang="fi">
-
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="color-scheme" content="light">
-        <title>Asuntohintalaskuri</title>
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-B/GM4XqrwHnWXNOWMbloTmrYXZg10cakYGmpfsR/bbzQ6JAJI4ihuyADKLnBgrCe" crossorigin="anonymous">
-        <script type="module" src="https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-1a/pXj49ZQ1aHEmrJ+gMw1otqoVsYwlEnlD8mIfY2TV03r20Y0CN7uqx1tQogjPL" crossorigin="anonymous"></script>
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="styles/styles.css">
-        
-    </head>
-
-    <body>
-
-        <header class="site-header">
-            <a class="logo-header" href="index.html">
-                <div class="logo">
-                    <img src="kuvat/Logo_Asuntohintalaskuri.png" alt="Asuntohintalaskurin logo">
-                </div> 
-                <h1 class="site-name">Asuntohintalaskuri</h1>
-            </a>
-            <a class="btn btn-small" href="calculator.html">Laskuriin</a>
-        </header>
-
-        <main>
-            <!-- Hero -->
-        <main>
-            <!-- Hero -->
-            <section class="hero">
-                <div class="hero-slides">
-                    <img class="hero-slide is-active" src="kuvat/bgimg.png" alt="">
-                    <img class="hero-slide" src="kuvat/Talo1.png" alt="" loading="lazy">
-                    <img class="hero-slide" src="kuvat/Talo2.png" alt="" loading="lazy">
-                    <img class="hero-slide" src="kuvat/Talo3.png" alt="" loading="lazy">
-            </div>
-                </div>
-                <div class="hero-content">
-                    <div class="hero-logo">
-                        <img src="kuvat/Logo_Asuntohintalaskuri.png" alt="Asuntohintalaskurin logo">
-                    </div>
-                    <p class="hero-text">
-                        Asuntohintalaskuri on ilmainen työkalu, jolla voit laskea asuntosi hinnan antamalla tiedot nykyisestä asunnostasi.
-                        Laskurimme vertailee asuntoasi alueen muiden samantyylisten asuntojen kanssa ja antaa sinulle hinta-arvion.
-                    </p>
-                    <a class="btn" id="laskuri" href="calculator.html">Laske asuntosi hinta-arvio</a>
-                </div>
-                    <div class="hero-dots"></div>
-            </section>
-
-            <!-- Miten toimii -->
-            <section class="card home-section">
-                <h2>Miten asuntohintalaskuri toimii?</h2>
-                <ol class="steps">
-                    <li>
-                        <h3>Anna asuntosi tiedot</h3>
-                        <p>Syötä Asuntohintalaskuriin asunnon perustiedot sekä mahdolliset lisäominaisuudet. Näiden tietojen perusteella laskuri voi arvioida asunnon hinta-arvion.</p>
-                    </li>
-                    <li>
-                        <h3>Hinta-arvio lasketaan</h3>
-                        <p>Laskurimme vertaa antamiasi tietoja ja laskee asunnosta kerkimääräisen hinta-arvion.</p>
-                    </li>
-                    <li>
-                        <h3>Asunnon hinta-arvio</h3>
-                        <p>Näytämme sinulle arvion asunnon hinnasta. Voit muokata antamiasi tietoja ja laskea uuden arvion nopeasti.</p>
-                    </li>
-                </ol>
-            </section>
-
-            <!-- Hintaan vaikuttavat tekijät -->
-            <section class="card home-section">
-                <h2>Mitkä tekijät vaikuttavat hinta-arvioon?</h2>
-                <div class="factors">
-                    <article>
-                        <h3>Sijainti</h3>
-                        <p><strong>Kaupunki ja kaupunginosa määrittävät markkinahinnan perustason.</strong></p>
-                        <p>Keskeiset alueet, palveluiden läheisyys ja hyvät liikenneyhteydet nostavat arvoa, kun taas syrjäisemmät sijainnit laskevat sitä.</p>
-                    </article>
-
-                    <article>
-                        <h3>Kunto</h3>
-                        <p><strong>Asunnon kunto vaikuttaa merkittävästi asunnon arvoon.</strong></p>
-                        <ul>
-                            <li><strong>Erinomainen</strong> = Uudenveroinen</li>
-                            <li><strong>Hyvä</strong> = Normaalia kulumaa, ei suuria remonttitarpeita</li>
-                            <li><strong>Tyydyttävä</strong> = Ikääntynyt, vaatii pintaremonttia</li>
-                            <li><strong>Välttävä</strong> = Selkeä remontintarve</li>
-                        </ul>
-                    </article>
-
-                    <article>
-                        <h3>Asunnon koko ja huoneiden määrä</h3>
-                        <p><strong>Neliömäärä ja huoneiden määrä on yksi vahvimmista hinnan selittäjistä.</strong></p>
-                        <p>Suurempi neliömäärä ja toimiva huonejako voi lisätä arvoa myös pienemmissä asunnoissa.</p>
-                    </article>
-
-                    <article>
-                        <h3>Lisäominaisuudet</h3>
-                        <p><strong>Mahdolliset lisäominaisuudet voivat nostaa asunnon arvoa merkittävästi.</strong></p>
-                        <p>Sauna, parveke ja hissi lisäävät asumismukavuutta ja kysyntää.</p>
-                    </article>
-                </div>
-
-            </section>
-
-        </main>
-
-        <footer class="site-footer">
-            <p>© 2026 Asuntohintalaskuri</p>
-            <p>Hinta-arvio perustuu lineaariseen regressiomalliin. Arvio ei vastaa todellista markkinahintaa.</p>
-        </footer>
-<script src="carousel.js" defer></script>
-    </body>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>asuntohintalaskuri-react</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
 </html>
