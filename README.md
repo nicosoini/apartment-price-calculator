@@ -16,7 +16,7 @@ Saara Orvas (Saara-o)
 
 ### User Interface
 
-The user interface was designed using Figma tools and implemented with HTML, CSS, and JavaScript. The UI provides a clear landing page that leads to a form where the user fills in the following details:
+The user interface was designed using Figma tools and implemented as a **React** application utilizing HTML, CSS, and JavaScript. The UI provides a clear landing page that leads to a form where the user fills in the following details:
 
 - Location
 - Floor area (square meters)
@@ -27,13 +27,21 @@ The user interface was designed using Figma tools and implemented with HTML, CSS
 - Floor
 - Additional features (Elevator, Sauna, Balcony)
 
-### The application can be found at: ....
+### The application can be found at: [Apartment Price Calculator](https://asuntohintalaskuri.netlify.app/)
+
+### Running the Application Locally
+
+To run the application locally on your machine, follow these steps:
+
+1. Download the project files (or clone the repository)
+2. Open the terminal in the project folder and run `npm install`
+3. Start the application by running `npm run dev`
 
 ### Application Functionality:
 
 #### Training Data
 
-The training dataset was created using Google Gemini AI because data on sold apartments is not available via a free API.The dataset contains a training set of 10,000 rows in total.The first row contains the headers.Headers:
+The training dataset was created using Google Gemini AI because data on sold apartments is not available via a free API. The dataset contains a training set of 10,000 rows in total. The first row contains the headers. Headers:
 
 - hinta (selling price of the apartment in euros (€))
 - pinta_ala (in square meters (m²))
@@ -52,7 +60,7 @@ The training dataset was created using Google Gemini AI because data on sold apa
 
 #### Machine Learning Model
 
-The machine learning model is implemented using the [multivariate linear regression](https://www.npmjs.com/package/ml-regression-multivariate-linear?activeTab=readme) library.The model is located in the file [algoritmi.js](https://github.com/nicosoini/Asuntohintalaskuri/blob/main/algoritmi.js). The model is divided into two functions (`opetaMalli()` and `teeEnnuste(OpetettuMLR, arvioitavaTalo)`).
+The machine learning model is implemented using the [multivariate linear regression](https://www.npmjs.com/package/ml-regression-multivariate-linear?activeTab=readme) library. The model is located in the file [algoritmi.js](https://github.com/nicosoini/Asuntohintalaskuri/blob/main/algoritmi.js). The model is divided into two functions (`opetaMalli()` and `teeEnnuste(OpetettuMLR, arvioitavaTalo)`).
 
 - `opetaMalli()`: Fetches the training dataset --> parses the training data from CSV format into JavaScript objects --> separates X (apartment features) and Y (target outcomes (price)) from the training dataset --> trains the model --> returns the trained model.
 - `teeEnnuste(OpetettuMLR, arvioitavaTalo)`: Takes the trained model (trained with the `opetaMalli()` function) and the user's apartment features as an array as parameters --> makes a price prediction using the trained model and the user's apartment features --> returns the price estimate as an integer.
