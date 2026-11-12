@@ -168,10 +168,17 @@ a:focus-visible, .btn:focus-visible {
 }
 
 .hero-logo {
-    display: flex;
-    height: 11rem;
-    width: auto;
-    /* mix-blend-mode: multiply; */
+  display: flex;
+  justify-content: center;
+  height: 11rem;
+  width: auto;
+}
+
+.hero-logo img {
+  height: 100%;
+  width: auto;
+  max-width: 100%;
+  object-fit: contain;
 }
 
 .hero-content {
@@ -191,10 +198,11 @@ a:focus-visible, .btn:focus-visible {
 }
 
 /* ---------- Cards ---------- */
+/* ---------- Cards ---------- */
 .card {
   max-width: none;
   margin-block: 2rem 0;
-  margin-inline: clamp(1rem, 5vw, 3rem);
+  /* margin-inline: auto tulee jo ylempää ja pitää kortin keskellä! */
   padding: clamp(1.25rem, 3vw, 2rem);
   background: #fff;
   border: 1px solid var(--blue-border);
@@ -321,25 +329,50 @@ main > .card:last-child { margin-bottom: 2rem; }
 
 /* ---------- Responsive ---------- */
 @media (max-width: 760px) {
-  .steps, .factors { grid-template-columns: 1fr; }
+  :root {
+    --page-gutter: 1rem; /* Leveämmät ja tasaisemmat laatikot puhelimella */
+  }
+
+  .steps, .factors { 
+    grid-template-columns: 1fr; 
+  }
 
   .site-header {
     gap: 0.5rem;
     padding: 0.5rem 1rem;
   }
 
-  .logo { height: 4rem; }          /* was 10rem, too big for phones */
+  .logo { height: 3rem; }
 
   .site-name { font-size: 1rem; }
 
   .site-header .btn-small {
     padding: 0.55rem 0.9rem;
     font-size: 0.8rem;
-    max-width: 8.5rem;             /* text wraps to 2 lines instead of overflowing */
+    max-width: 8.5rem;
+  }
+
+  /* Levitetään kuvakaruselli koko ruudun levyiseksi mobiilissa */
+  .hero {
+    width: 100%;
+    margin-inline: 0;
+    border-radius: 0;
+    min-height: 20rem;
+    padding: 3rem 1rem 3.5rem;
+  }
+
+  .hero-logo {
+    height: 7.5rem; /* Hieman kompaktimpi logo puhelimen ruudulle */
+  }
+
+  .hero-text {
+    padding: 0.5rem 0;
+    font-size: 1.05rem;
   }
 
   .card {
     text-align: center;
+    margin-block: 1.25rem 0;
   }
 }
 
@@ -347,7 +380,3 @@ main > .card:last-child { margin-bottom: 2rem; }
   .btn { transition: none; }
 }
 
-@media (min-width: 1100px) {
-  .card {margin-inline: auto; }
-
-}
