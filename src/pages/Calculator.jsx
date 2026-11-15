@@ -56,6 +56,15 @@ export default function Calculator() {
     }));
   };
 
+  // Postinumero on virheellinen, jos se on annettu ja kaupunki on valittu,
+  // mutta luku ei ole kokonaisluku tai ei kuulu kaupungin postinumerovälille.
+  const postinumeroVirheellinen = (() => {
+    if (formData.postinumero === "" || formData.kaupunki === "") return false;
+    const luku = Number(formData.postinumero);
+    const [alaraja, ylaraja] = KAUPUNGIN_POSTINUMEROT[formData.kaupunki];
+    return !Number.isInteger(luku) || luku < alaraja || luku > ylaraja;
+  })();
+
   const handleSubmit = (e) => {
     e.preventDefault();
     setVirhe("");
@@ -141,8 +150,15 @@ export default function Calculator() {
               placeholder="Anna postinumero"
               value={formData.postinumero}
               onChange={handleChange}
+              aria-invalid={postinumeroVirheellinen}
+              style={postinumeroVirheellinen ? { borderColor: "#d9534f", outlineColor: "#d9534f" } : undefined}
               required
             />
+            {postinumeroVirheellinen && (
+              <small style={{ color: "#d9534f" }}>
+                Postinumero ei kuulu valittuun kaupunkiin.
+              </small>
+            )}
           </div>
 
           <div className="field">
