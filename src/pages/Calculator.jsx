@@ -2,6 +2,16 @@ import { useState, useEffect } from "react";
 import { opetaMalli, teeEnnuste } from "../algoritmi";
 import "../styles/calculator.css";
 
+// Kaupunkien postinumerovälit (alkunollat poistettuina, esim. 00100 -> 100), kuten opetusdatassa
+const KAUPUNGIN_POSTINUMEROT = {
+  1: [100, 1099],     // Helsinki
+  2: [2100, 2999],    // Espoo
+  3: [33000, 33999],  // Tampere
+  4: [20000, 20999],  // Turku
+  5: [90000, 90999],  // Oulu
+  6: [40001, 40999]   // Jyväskylä
+};
+
 export default function Calculator() {
   const [malli, setMalli] = useState(null);
   const [ladataanMallia, setLadataanMallia] = useState(true);
@@ -67,26 +77,39 @@ export default function Calculator() {
       return;
     }
 
-    // Muodostetaan syötetaulukko TÄSMÄLLEEN samassa järjestyksessä kuin algoritmi.js:ssä:
-    // [pinta_ala, huoneita, rakennusvuosi, asunnon_tyyppi, kaupunki, postinumero, kerros, hissi, parveke, sauna, autopaikka, kunto, tontti]
-    const arvioitavaTalo = [
-      Number(formData.pintaala),
-      Number(formData.huoneet),
-      Number(formData.rakennusvuosi),
-      Number(formData.rakennus),
-      Number(formData.kaupunki),
-      Number(formData.postinumero), // esim. "00100" -> 100
-      Number(formData.kerros),
-      formData.hissi ? 1 : 0,
-      formData.parveke ? 1 : 0,
-      formData.sauna ? 1 : 0,
-      formData.autopaikka ? 1 : 0,
-      Number(formData.kunto),
-      Number(formData.tontti)
-    ];
+    // Tarkistetaan, että postinumero kuuluu valittuun kaupunkiin.
+    // Malli päättelee kaupungin postinumerosta, joten ristiriita antaisi harhaanjohtavan arvion.
+    const postinumero = Number(formData.postinumero); // esim. "00100" -> 100
+    const [alaraja, ylaraja] = KAUPUNGIN_POSTINUMEROT[formData.kaupunki];
+    if (!Number.isInteger(postinumero) || postinumero < alaraja || postinumero > ylaraja) {
+      setVirhe("Postinumero ei kuulu valittuun kaupunkiin.");
+      setTulos(null);
+      return;
+    }
 
-    const arvio = teeEnnuste(malli, arvioitavaTalo);
-    setTulos(arvio);
+    // Mallille annetaan asunto objektina, jonka kentät vastaavat CSV-datan sarakkeita.
+    // Kategoristen tietojen koodauksen (one-hot) hoitaa algoritmi.js.
+    const arvioitavaTalo = {
+      pinta_ala: Number(formData.pintaala),
+      huoneita: Number(formData.huoneet),
+      rakennusvuosi: Number(formData.rakennusvuosi),
+      asunnon_tyyppi: Number(formData.rakennus),
+      postinumero,
+      kerros: Number(formData.kerros),
+      hissi: formData.hissi ? 1 : 0,
+      parveke: formData.parveke ? 1 : 0,
+      sauna: formData.sauna ? 1 : 0,
+      autopaikka: formData.autopaikka ? 1 : 0,
+      kunto: Number(formData.kunto),
+      tontti: Number(formData.tontti)
+    };
+
+    try {
+      setTulos(teeEnnuste(malli, arvioitavaTalo));
+    } catch (err) {
+      setVirhe(err.message);
+      setTulos(null);
+    }
   };
 
   return (
