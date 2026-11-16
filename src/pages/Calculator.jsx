@@ -7,6 +7,7 @@ export default function Calculator() {
   const [ladataanMallia, setLadataanMallia] = useState(true);
   const [tulos, setTulos] = useState(null);
   const [virhe, setVirhe] = useState("");
+  const [errors, setErrors] = useState({});
 
   const [formData, setFormData] = useState({
     kaupunki: "",
@@ -44,6 +45,7 @@ export default function Calculator() {
       ...prev,
       [id]: type === "checkbox" ? checked : value
     }));
+    setErrors((prev) => ({ ...prev, [id]: undefined}))
   };
 
   const handleSubmit = (e) => {
@@ -55,12 +57,19 @@ export default function Calculator() {
       "kaupunki", "postinumero", "pintaala", "rakennus",
       "huoneet", "kerros", "rakennusvuosi", "kunto", "tontti"
     ];
-    for (const kentta of pakolliset) {
-      if (formData[kentta] === "") {
-        setVirhe("Täytä kaikki pakolliset kentät ennen laskemista.");
-        return;
-      }
+    const uudetVirheet = {};
+
+  for(const kentta of pakolliset) {
+    if (formData[kentta] === "") {
+      uudetVirheet[kentta] = "Tämä kenttä on pakollinen";
     }
+  }
+
+  setErrors(uudetVirheet);
+
+  if (Object.keys(uudetVirheet).length > 0) {
+    return;
+  }
 
     if (!malli) {
       setVirhe("Laskentamalli ei ole vielä valmis.");
@@ -98,7 +107,12 @@ export default function Calculator() {
         <form id="laskuri-lomake" className="form-grid" onSubmit={handleSubmit} noValidate>
           <div className="field">
             <label htmlFor="kaupunki">Sijainti</label>
-            <select id="kaupunki" value={formData.kaupunki} onChange={handleChange} required>
+            <select id="kaupunki"
+            value={formData.kaupunki}
+            onChange={handleChange}
+            required
+            aria-invalid={!!errors.kaupunki}
+            aria-describedby={errors.kaupunki ? "kaupunki-virhe" : undefined}>
               <option value="" disabled>Valitse kaupunki</option>
               <option value="1">Helsinki</option>
               <option value="2">Espoo</option>
@@ -107,6 +121,11 @@ export default function Calculator() {
               <option value="5">Oulu</option>
               <option value="6">Jyväskylä</option>
             </select>
+              {errors.kaupunki && (
+              <p id="kaupunki-virhe" className="field-error">
+                {errors.kaupunki}
+              </p>
+            )}
           </div>
 
           <div className="field">
@@ -119,7 +138,14 @@ export default function Calculator() {
               value={formData.postinumero}
               onChange={handleChange}
               required
+              aria-invalid={!!errors.postinumero}
+              aria-describedby={errors.postinumero ? "postinumero-virhe" : undefined}
             />
+              {errors.postinumero && (
+              <p id="postinumero-virhe" className="field-error">
+                {errors.postinumero}
+              </p>
+            )}
           </div>
 
           <div className="field">
@@ -134,22 +160,44 @@ export default function Calculator() {
               value={formData.pintaala}
               onChange={handleChange}
               required
+              aria-invalid={!!errors.pintaala}
+              aria-describedby={errors.pintaala ? "pintaala-virhe" : undefined}
             />
+              {errors.pintaala && (
+              <p id="pintaala-virhe" className="field-error">
+                {errors.pintaala}
+              </p>
+            )}
           </div>
 
           <div className="field">
             <label htmlFor="rakennus">Rakennuksen tyyppi</label>
-            <select id="rakennus" value={formData.rakennus} onChange={handleChange} required>
+            <select id="rakennus"
+            value={formData.rakennus}
+            onChange={handleChange}
+            required
+            aria-invalid={!!errors.rakennus}
+            aria-describedby={errors.rakennus ? "rakennus-virhe" : undefined}>
               <option value="" disabled>Valitse rakennuksen tyyppi</option>
               <option value="1">Kerrostalo</option>
               <option value="2">Rivitalo</option>
               <option value="3">Omakotitalo</option>
             </select>
+              {errors.rakennus && (
+              <p id="rakennus-virhe" className="field-error">
+                {errors.rakennus}
+              </p>
+            )}
           </div>
 
           <div className="field">
             <label htmlFor="huoneet">Huonemäärä</label>
-            <select id="huoneet" value={formData.huoneet} onChange={handleChange} required>
+            <select id="huoneet"
+            value={formData.huoneet}
+            onChange={handleChange}
+            required
+            aria-invalid={!!errors.huoneet}
+            aria-describedby={errors.huoneet ? "huoneet-virhe" : undefined}>
               <option value="" disabled>Valitse huonemäärä</option>
               <option value="1">1</option>
               <option value="2">2</option>
@@ -157,11 +205,21 @@ export default function Calculator() {
               <option value="4">4</option>
               <option value="5">5 tai enemmän</option>
             </select>
+              {errors.huoneet && (
+              <p id="huoneet-virhe" className="field-error">
+                {errors.huoneet}
+              </p>
+            )}
           </div>
 
           <div className="field">
             <label htmlFor="kerros">Asuinkerros</label>
-            <select id="kerros" value={formData.kerros} onChange={handleChange} required>
+            <select id="kerros"
+            value={formData.kerros}
+            onChange={handleChange}
+            required
+            aria-invalid={!!errors.kerros}
+            aria-describedby={errors.kerros ? "kerros-virhe" : undefined}>
               <option value="" disabled>Valitse kerros</option>
               <option value="1">1</option>
               <option value="2">2</option>
@@ -170,6 +228,11 @@ export default function Calculator() {
               <option value="5">5</option>
               <option value="6">6 tai ylempi</option>
             </select>
+              {errors.kerros && (
+              <p id="kerros-virhe" className="field-error">
+                {errors.kerros}
+              </p>
+            )}
           </div>
 
           <div className="field">
@@ -184,27 +247,55 @@ export default function Calculator() {
               value={formData.rakennusvuosi}
               onChange={handleChange}
               required
+              aria-invalid={!!errors.rakennusvuosi}
+              aria-describedby={errors.rakennusvuosi ? "rakennusvuosi-virhe" : undefined}
             />
+              {errors.rakennusvuosi && (
+              <p id="rakennusvuosi-virhe" className="field-error">
+                {errors.rakennusvuosi}
+              </p>
+            )}
           </div>
 
           <div className="field">
             <label htmlFor="kunto">Asunnon kunto</label>
-            <select id="kunto" value={formData.kunto} onChange={handleChange} required>
+            <select id="kunto"
+            value={formData.kunto}
+            onChange={handleChange}
+            required
+            aria-invalid={!!errors.kunto}
+            aria-describedby={errors.kunto ? "kunto-virhe" : undefined}
+             >
               <option value="" disabled>Valitse asunnon kunto</option>
               <option value="4">Erinomainen</option>
               <option value="3">Hyvä</option>
               <option value="2">Tyydyttävä</option>
               <option value="1">Huono</option>
             </select>
+            {errors.kunto && (
+              <p id="kunto-virhe" className="field-error">
+                {errors.kunto}
+              </p>
+            )}
           </div>
 
           <div className="field">
             <label htmlFor="tontti">Tontti</label>
-            <select id="tontti" value={formData.tontti} onChange={handleChange} required>
+            <select id="tontti"
+            value={formData.tontti}
+            onChange={handleChange}
+            required
+            aria-invalid={!!errors.tontti}
+            aria-describedby={errors.tontti ? "tontti-virhe" : undefined}>
               <option value="" disabled>Valitse tontin tyyppi</option>
               <option value="1">Omistustontti</option>
               <option value="0">Vuokratontti</option>
             </select>
+            {errors.tontti && (
+              <p id="tontti-virhe" className="field-error">
+                {errors.tontti}
+              </p>
+            )}
           </div>
 
           <fieldset className="field">
