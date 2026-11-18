@@ -326,7 +326,7 @@ export default function Calculator() {
               <option value="4">Erinomainen</option>
               <option value="3">Hyvä</option>
               <option value="2">Tyydyttävä</option>
-              <option value="1">Huono</option>
+              <option value="1">Välttävä</option>
             </select>
             {errors.kunto && (
               <p id="kunto-virhe" className="field-error">

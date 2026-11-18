@@ -3,7 +3,7 @@ export default function Footer() {
     <footer className="site-footer">
       <p>© 2026 Asuntohintalaskuri</p>
       <p>
-        Hinta-arvio perustuu lineaariseen regressiomalliin ja tekoälyn luomaan tietokantaan. 
+        Hinta-arvio perustuu lineaariseen regressiomalliin, tekoälyn luomaan tietokantaan sekä Tilastokeskuksen asuntomarkkinadataan. 
         Arvio ei vastaa todellista markkinahintaa.
       </p>
     </footer>

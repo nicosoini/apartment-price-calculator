@@ -110,7 +110,7 @@ export default function Home() {
           <article>
             <h3>Lisäominaisuudet</h3>
             <p><strong>Mahdolliset lisäominaisuudet voivat nostaa asunnon arvoa merkittävästi.</strong></p>
-            <p>Sauna, parveke ja hissi lisäävät asumismukavuutta ja kysyntää.</p>
+            <p>Sauna, parveke, autopaikka ja hissi lisäävät asumismukavuutta ja kysyntää.</p>
           </article>
         </div>
       </section>
